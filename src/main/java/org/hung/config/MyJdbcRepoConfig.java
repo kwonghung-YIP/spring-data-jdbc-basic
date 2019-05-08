@@ -16,6 +16,10 @@ import org.springframework.data.jdbc.repository.config.JdbcConfiguration;
 import org.springframework.data.relational.core.mapping.NamingStrategy;
 import org.springframework.data.relational.core.mapping.RelationalPersistentProperty;
 import org.springframework.data.relational.core.mapping.event.AfterLoadEvent;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter;
 
 @Configuration
 @EnableJdbcRepositories(basePackages={"org.hung.repo"})
@@ -28,7 +32,10 @@ public class MyJdbcRepoConfig {//extends JdbcConfiguration {
 
 			@Override
 			public Optional<String> getCurrentAuditor() {
-				return Optional.of("testing");
+				return Optional.ofNullable(SecurityContextHolder.getContext())
+						.map(SecurityContext::getAuthentication)
+						.filter(Authentication::isAuthenticated)
+						.map(Authentication::getName);
 			}
 		};
 	}
@@ -48,19 +55,5 @@ public class MyJdbcRepoConfig {//extends JdbcConfiguration {
 			
 		};
 	}
-	/*
-	@Bean
-	public ApplicationListener<AfterLoadEvent> entityEventListener(CustomerRepository customerRepo) {
-		
-		return event -> {
-			Object entity = event.getEntity();
-			if (entity instanceof Order) {
-				Order order = (Order)entity;
-				Optional<Customer> customer = customerRepo.findById(order.getCustomerId());
-				order.setCustomer(customer.get());
-			}
-		};
-		
-	}
-	*/
+
 }
