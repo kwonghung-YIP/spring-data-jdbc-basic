@@ -6,14 +6,14 @@
 <table>
   <tr>
     <td>
-      ```
-      Pojo
-      ````
+```
+Pojo
+````
     </td>
     <td>
-      ```
-      SQL
-      ```
+```
+SQL
+```
     </td>
   </tr>
 </table>
