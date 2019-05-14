@@ -1,25 +1,22 @@
 ## Introduction
 
-## Mapping between Pojo and Table
+## The Order-to-DeliveryAddress (one-to-one) relationship
 
-### Order
-<table>
-  <tr>
-    <td>
+```Java
+public class Order {
+...
+  private Address deliveryAddress;
+...  
 ```
-Pojo
-````
-    </td>
-    <td>
+
+### Customer the name of mapping field
+
+## The Order-to-OrderItem (one-to-many) relationship
+
+```Java
+public class Order {
+...
+  private Address deliveryAddress;
 ```
-SQL
-```
-    </td>
-  </tr>
-</table>
 
-## Delivery address - the one-to-one relation, or the nested object
-
-## How about Customer? We don't want a big tree...
-
-## Integrate with spring security for auditing
+## The Order-to-Customer (Embedded Object) relationship
