@@ -2,6 +2,7 @@
 
 ## The Order-to-DeliveryAddress (one-to-one) relationship
 
+The Order object has the deliveryAddress as an nested object
 ```Java
 @Table("my_order_table")
 public class Order {
@@ -10,17 +11,17 @@ public class Order {
    private Address deliveryAddress;
    ...  
 ```
+```sql
+create table my_order_table (
+   ref int not null primary key auto_increment,
+   ...
+```
+
 ```Java
 @Table("my_order_address_table")
 public class Address {
    @Column("addr_id")
    private @Id Long Id;
-   ...
-```
-
-```sql
-create table my_order_table (
-   ref int not null primary key auto_increment,
    ...
 ```
 ```sql
