@@ -3,17 +3,15 @@
 ## The Order-to-DeliveryAddress (one-to-one) relationship
 
 ```Java
-@Data
 @Table("my_order_table")
 public class Order {
 ...
   private Address deliveryAddress;
 ...  
 
-@Data
 @Table("my_order_address_table")
 public class Address {
-
+...
 ```
 
 
