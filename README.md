@@ -2,7 +2,10 @@
 
 ## The Order-to-DeliveryAddress (one-to-one) relationship
 
-The Order object has the deliveryAddress as an nested object
+The Order object has a deliveryAddress property which type is an Address is an embedded object.
+
+First, the Order object map to table "my_order_table"
+
 ```Java
 @Table("my_order_table")
 public class Order {
@@ -34,6 +37,21 @@ create table my_order_table_address_table (
 ```
 
 ### Customer the name of mapping field
+
+```java
+@Configuration
+public class MyJdbcRepoConfig {
+   ...
+   @Bean
+   public NamingStrategy namingStrategy() {
+      return new NamingStrategy() {
+         @Override
+         public String getReverseColumnName(RelationalPersistentProperty property) {
+            if (Address.class.equals(property.getRawType() && "deliveryAddress".equals(property.getName())) {
+               return "order_ref";
+            ...
+      }
+```
 
 ## The Order-to-OrderItem (one-to-many) relationship
 
