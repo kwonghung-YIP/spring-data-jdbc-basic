@@ -9,7 +9,7 @@ The Order object has a deliveryAddress property which type is an Address is an e
 
 First, the Order object map to table "my_order_table"
 
-As state in the Spring Data JDBC reference, any reference to another entity is considered a one-to-one relationship. In our case, the deliveryAddress property refer to an Address object.
+As state in the [Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/docs/1.0.8.RELEASE/reference/html/#jdbc.entity-persistence.types), any reference to another entity is considered a one-to-one relationship. In our case, the deliveryAddress property refer to an Address object.
 
 ```Java
 @Table("my_order_table")
@@ -24,6 +24,8 @@ create table my_order_table (
    ref int not null primary key auto_increment,
    ...
 ```
+
+#### Address entity
 
 ```Java
 @Table("my_order_address_table")
