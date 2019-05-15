@@ -5,7 +5,9 @@
 
 #### Order entity
 
-From the [Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/docs/1.0.8.RELEASE/reference/html/#jdbc.entity-persistence.types), any reference to another entity is considered a one-to-one relationship. In our Order entity, the deliveryAddress property refers to an Address entity .
+From the [Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/docs/1.0.8.RELEASE/reference/html/#jdbc.entity-persistence.types), any reference to another entity is considered a one-to-one relationship. 
+
+In our Order entity, it contains a deliveryAddress property refers to an Address entity .
 
 ```Java
 @Table("my_order_table")
