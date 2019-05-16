@@ -9,6 +9,9 @@ From the [Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/do
 
 In our Order entity, it contains a deliveryAddress property refers to an Address entity .
 
+The Order object has a deliveryAddres property which is a reference to the Address object.
+
+
 ```Java
 @Table("my_order_table")
 public class Order {
