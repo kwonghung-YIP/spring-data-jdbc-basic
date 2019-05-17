@@ -60,5 +60,12 @@ public class MyJdbcRepoConfig {
       }
 ```
 
-### The insert and select SQL
+
+### Select SQL
+
+### Insert SQL
+
+### Update SQL
+
+### Delete SQL
 
