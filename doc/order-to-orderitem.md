@@ -12,7 +12,7 @@ public class Order {
    public OrderItem addItem(Product product, int quantity) {
       OrderItem item = new OrderItem();
       ...
-      items.add(item);
+      this.items.add(item);
       ...
 ```
 
@@ -24,10 +24,12 @@ public class OrderItem {
    ...
 ```
 
+### Order table
+
 ### Product table
 ```sql
 create table my_product_table (
-	  id int not null primary key auto_increment,
+   id int not null primary key auto_increment,
    ...
 ```
 
