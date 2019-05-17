@@ -102,14 +102,14 @@ create table my_product_table (
 ### OrderItem table
 ```sql
 create table my_order_item_table (
-	  order_ref int not null,
-	  item_no int not null,
-	  product_id int not null,
+   order_ref int not null,
+   item_no int not null,
+   product_id int not null,
    ...
-	  primary key(order_ref, product_id),
-	  foreign key fk_item_to_order(order_ref) references my_order_table(ref)
-	  ...
-	  foreign key fk_item_to_product(product_id) references my_product_table(id)
-	  ...
+   primary key(order_ref, product_id),
+   foreign key fk_item_to_order(order_ref) references my_order_table(ref)
+   ...
+   foreign key fk_item_to_product(product_id) references my_product_table(id)
+   ...
 
 # The Order-to-Customer (Embedded Object) relationship
