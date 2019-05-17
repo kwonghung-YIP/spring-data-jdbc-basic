@@ -68,11 +68,28 @@ public class MyJdbcRepoConfig {
 
 # The Order-to-OrderItem (one-to-many) relationship
 
+### Order entity
+
 ```Java
-@Data
+@Table("my_order_table")
 public class Order {
-...
-  private Address deliveryAddress;
+   ...
+   @Column(value="order_ref",keyColumn="item_no")
+   private List<OrderItem> items = new ArrayList<OrderItem>();
+   
+   public OrderItem addItem(Product product, int quantity) {
+      OrderItem item = new OrderItem();
+      ...
+      items.add(item);
+      ...
+```
+
+### OrderItem entity
+
+```Java
+@Table("my_order_item_table")
+public class OrderItem {
+   ...
 ```
 
 # The Order-to-Customer (Embedded Object) relationship
