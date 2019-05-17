@@ -26,6 +26,13 @@ public class OrderItem {
 
 ### Order table
 
+The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
+```sql
+create table my_order_table (
+   ref int not null primary key auto_increment,
+   ...
+```
+
 ### Product table
 ```sql
 create table my_product_table (
