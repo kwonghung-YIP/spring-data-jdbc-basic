@@ -1,11 +1,12 @@
 ## Introduction
 
+[Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/docs/1.0.8.RELEASE/reference/html/#jdbc.entity-persistence.types),
+
 ## The Order-to-Address (one-to-one) relationship
 
 #### Order entity
-
-[Spring Data JDBC reference](https://docs.spring.io/spring-data/jdbc/docs/1.0.8.RELEASE/reference/html/#jdbc.entity-persistence.types), 
-To establish the one-to-one relationship from order to address, the Order class has a deliveryAddress property which refer to an Address object, and ref property is identity for Order class.
+ 
+To establish the one-to-one relationship from order to address, the deliveryAddress property is given to Order class which is a reference to an Address object.
 
 ```Java
 @Table("my_order_table")
@@ -16,7 +17,7 @@ public class Order {
    ...  
 ```
 
-In the my_order_table, we defined the ref column as the primary key for my_order_table table.
+The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
 ```sql
 create table my_order_table (
    ref int not null primary key auto_increment,
