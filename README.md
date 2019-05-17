@@ -45,7 +45,7 @@ create table my_order_address_table (
    ...
 ```
 
-### Customerize the column name of the foreign key field
+### Customize the column name of the foreign key field in address table
 
 By default, the spring data jdbc will map the column name of the FK same as the refer table, in our case, should be the my_order_table. To override this, we defined a namingStrategy bean as following:
 
@@ -66,7 +66,7 @@ public class MyJdbcRepoConfig {
 
 ### The insert and select SQL
 
-## The Order-to-OrderItem (one-to-many) relationship
+# The Order-to-OrderItem (one-to-many) relationship
 
 ```Java
 @Data
@@ -75,4 +75,4 @@ public class Order {
   private Address deliveryAddress;
 ```
 
-## The Order-to-Customer (Embedded Object) relationship
+# The Order-to-Customer (Embedded Object) relationship
