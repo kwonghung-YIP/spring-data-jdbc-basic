@@ -1,6 +1,6 @@
 # The Order-to-OrderItem (one-to-many) relationship
 
-### Order entity class
+### Order and OrderItem entities
 
 ```Java
 @Table("my_order_table")
@@ -15,9 +15,6 @@ public class Order {
       this.items.add(item);
       ...
 ```
-
-### OrderItem entity class
-
 ```Java
 @Table("my_order_item_table")
 public class OrderItem {
