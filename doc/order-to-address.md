@@ -13,13 +13,6 @@ public class Order {
    ...  
 ```
 
-The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
-```sql
-create table my_order_table (
-   ref int not null primary key auto_increment,
-   ...
-```
-
 ### Address entity
 
 The Address class contains no information about Order.
@@ -28,6 +21,13 @@ The Address class contains no information about Order.
 public class Address {
    @Column("addr_id")
    private @Id Long Id;
+   ...
+```
+
+The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
+```sql
+create table my_order_table (
+   ref int not null primary key auto_increment,
    ...
 ```
 
