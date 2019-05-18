@@ -4,7 +4,7 @@ An order must have a delivery address for sending the products to customer, in t
 
 ### Order and Address entities
 
-To model this one-to-one relationship, the Order class has a deliveryAddress property which is a reference to an Address Object, on the other hand, the Adress class has no information about the order. The ref property in Order class and the id property in Address class are the identity property.
+To model this one-to-one relationship, the Order class has a deliveryAddress property which is a reference to an Address Object, on the other hand, the Adress class has no information about the order. The ref property in Order class and the id property in Address class are marked with @Id annotnation that means they are the identity property, and the @Table annotnation map both classes to table my_order_table and my_order_address_table respectively.
 
 ```Java
 @Table("my_order_table")
