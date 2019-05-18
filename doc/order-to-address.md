@@ -42,9 +42,9 @@ create table my_order_address_table (
    ...
 ```
 
-### Customize the column name of the foreign key field in address table
+### Tell the repository the column of the foreign key column
 
-By default, the spring data jdbc will map the column name of the FK same as the refer table, in our case, should be the my_order_table. To override this, we defined a namingStrategy bean as following:
+To let the repository knows that order_ref column is a foriegn key, we have to define a namingStrategy bean, and override the getReverseColumnName as following. By default, the repository will map the column name of the foreign key as same as the referring table, such as my_order_table, in our case.
 
 ```java
 @Configuration
