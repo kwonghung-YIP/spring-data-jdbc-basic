@@ -25,7 +25,10 @@ public class Address {
 
 ### CrudRepository
 
+We only have to define the repository for the aggregate root object.
+
 ```Java
+public interface OrderRepository extends CrudRepository<Order, Long>{ }
 ```
 
 ### Database table design
