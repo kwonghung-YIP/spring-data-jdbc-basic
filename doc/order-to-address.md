@@ -23,7 +23,7 @@ public class Address {
    ...
 ```
 
-### CrudRepository
+### Order Repository
 
 We only have to define the repository for the aggregate root object.
 
