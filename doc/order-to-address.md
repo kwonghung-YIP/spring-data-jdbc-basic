@@ -23,6 +23,11 @@ public class Address {
    ...
 ```
 
+### CrudRepository
+
+```Java
+```
+
 ### Database table design
 
 In opposite of the entity model, the order table contains no information about address, but the address table has the order_ref column which is a foreign key refer to order record as its parent.
