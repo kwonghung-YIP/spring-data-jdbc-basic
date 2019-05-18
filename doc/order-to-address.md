@@ -1,8 +1,10 @@
 # The Order-to-Address (one-to-one) relationship
 
-### Order entity
- 
-To establish the one-to-one relationship from order to address, the deliveryAddress property is given to Order class which is a reference to an Address object.
+An order must have a delivery address for sending the products to customer, in this example, the order-to-address is a one-to-one relationship.
+
+### Order and Address entities
+
+To model this one-to-one relationship, the Order class has a deliveryAddress property which is a reference to an Address Object, on the other hand, the Adress class has no information about the order. The ref property in Order class and the id property in Address class are the identity property.
 
 ```Java
 @Table("my_order_table")
@@ -13,9 +15,6 @@ public class Order {
    ...  
 ```
 
-### Address entity
-
-The Address class contains no information about Order.
 ```Java
 @Table("my_order_address_table")
 public class Address {
@@ -24,14 +23,16 @@ public class Address {
    ...
 ```
 
-The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
+### Database table design
+
+In opposite of the entity model, the order table contains no information about address, but the address table has the order_ref column which is a foreign key refer to order record as its parent.
+
 ```sql
 create table my_order_table (
    ref int not null primary key auto_increment,
    ...
 ```
 
-The my_order_address_table table that mapped to Address entity, which has a foreign key order_ref refer back to the my_order_table.
 ```sql
 create table my_order_address_table (
    addr_id int not null primary key auto_increment,
