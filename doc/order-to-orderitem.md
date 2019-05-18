@@ -2,6 +2,8 @@
 
 ### Order and OrderItem entities
 
+The  
+
 ```Java
 @Table("my_order_table")
 public class Order {
@@ -15,9 +17,12 @@ public class Order {
       this.items.add(item);
       ...
 ```
+
 ```Java
 @Table("my_order_item_table")
 public class OrderItem {
+
+   private Long productId; 
    ...
 ```
 
