@@ -1,6 +1,6 @@
 # Order-to-Customer (Embedded Object) relationship
 
-A customer can make many orders, therefore between them should be a one-to-many relation, and customer class should be aggregate root instead of order class. But thinking of you are working on the sale report, you focus on the order record and customer only a part of the order infomation, therefore, customer becomes an embedded object with the order class.
+A customer can place many orders, therefore the relationship between customer and order should be one-to-many, and customer class should be aggregate root instead of order class. But thinking of you are working on a sale report, you focus on the order record and customer only a part of the order infomation, therefore, customer becomes an embedded object with the order class.
 
 ### Order and Customer entities
  
@@ -52,7 +52,7 @@ create table my_customer_table (
 
 ### Load Customer object into Order with EventListener
 
-By default, the spring data jdbc will map the column name of the FK same as the refer table, in our case, should be the my_order_table. To override this, we defined a namingStrategy bean as following:
+Now Order and Customer are 2 aggregate roots and they have its own repository, for convenitence, we would like to inject the customer object into order class whenever it load from the OrderRepository. The EventListener beload bind the AfterLoadEvent of Order entity and inject the customer object into it.
 
 ```java
 @Configuration
