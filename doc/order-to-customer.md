@@ -1,8 +1,8 @@
-#Order-to-Customer (Embedded Object) relationship
+# Order-to-Customer (Embedded Object) relationship
 
 A customer can make many orders, therefore between them should be a one-to-many relation, and customer class should be aggregate root instead of order class. But thinking of you are working on the sale report, you focus on the order record and customer only a part of the order infomation, therefore, customer becomes an embedded object with the order class.
 
-### Order entity
+### Order and Customer entities
  
 The customerId property is mapped to customer_id column, which is a foreign key to customer record. The customer property is an object reference that marked with @Transient annotation, which means this field will be ignored by the repository. The setCustomer function assign value to both properties when given a customer object.
 
@@ -22,9 +22,6 @@ public class Order {
    }
    ...
 ```
-### Customer entity
-
-The Customer class has no information about the order.
 
 ```Java
 @Table("my_customer_table")
@@ -34,7 +31,10 @@ public class Customer {
    ...
 ```
 
-The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
+### Order and Customer tables
+
+The customer_id column in my_order_table is a foreign key to my_customer_table.
+
 ```sql
 create table my_order_table (
    ...
@@ -44,14 +44,13 @@ create table my_order_table (
    ...
 ```
 
-The my_order_address_table table that mapped to Address entity, which has a foreign key order_ref refer back to the my_order_table.
 ```sql
 create table my_customer_table (
    id int not null primary key auto_increment,
    ...
 ```
 
-### Customize the column name of the foreign key field in address table
+### Load Customer object into Order with EventListener
 
 By default, the spring data jdbc will map the column name of the FK same as the refer table, in our case, should be the my_order_table. To override this, we defined a namingStrategy bean as following:
 
@@ -75,12 +74,4 @@ public class EventListenerConfig {
    }
 ```
 
-
-### Select SQL
-
-### Insert SQL
-
-### Update SQL
-
-### Delete SQL
 
