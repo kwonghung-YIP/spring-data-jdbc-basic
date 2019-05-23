@@ -1,8 +1,10 @@
-# Order-to-Customer (Embedded Object) relationship
+#Order-to-Customer (Embedded Object) relationship
+
+A customer can make many orders, therefore between them should be a one-to-many relation, and customer class should be aggregate root instead of order class. But thinking of you are working on the sale report, you focus on the order record and customer only a part of the order infomation, therefore, customer becomes an embedded object with the order class.
 
 ### Order entity
  
-To establish the one-to-one relationship from order to address, the deliveryAddress property is given to Order class which is a reference to an Address object.
+The customerId property is mapped to customer_id column, which is a foreign key to customer record. The customer property is an object reference that marked with @Transient annotation, which means this field will be ignored by the repository. The setCustomer function assign value to both properties when given a customer object.
 
 ```Java
 @Table("my_order_table")
@@ -20,6 +22,17 @@ public class Order {
    }
    ...
 ```
+### Customer entity
+
+The Customer class has no information about the order.
+
+```Java
+@Table("my_customer_table")
+public class Customer {
+
+   private @Id Long Id;
+   ...
+```
 
 The Order object is mapped to the *my_order_table* table, with ref column as the primary key.
 ```sql
@@ -28,17 +41,6 @@ create table my_order_table (
    customer_id int not null,
    ...
    foreign key fk_order_to_customer(customer_id) references my_customer_table(id)
-   ...
-```
-
-### Customer entity
-
-The Address class contains no information about Order.
-```Java
-@Table("my_customer_table")
-public class Customer {
-
-   private @Id Long Id;
    ...
 ```
 
